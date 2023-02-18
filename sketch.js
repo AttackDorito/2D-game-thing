@@ -2,7 +2,7 @@ let screen_width = window.innerWidth;
 let screen_height = window.innerHeight;
 
 function setup() {
-  createCanvas(screen_width, screem_height);
+  createCanvas(screen_width, screen_height);
 }
 
 function draw() {
