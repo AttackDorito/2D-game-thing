@@ -8,6 +8,8 @@ const playerObj = {
     posY        : 200,
     velocityVect: [0,0], //velocity vector
     direction   : 0,         //facing direction (radians)
+    friction    : 0.99,
+
     thrust      : function(){
         this.velocityVect[0] += Math.sin(this.direction) * 0.1;
         this.velocityVect[1] -= Math.cos(this.direction) * 0.1;
@@ -26,6 +28,8 @@ const playerObj = {
         if(keyIsDown(RIGHT_ARROW)){
             this.direction += 0.1;
         }
+        this.velocityVect[0] *= this.friction;
+        this.velocityVect[1] *= this.friction;
         translate(screen_width/2, screen_height/2);
         rotate(this.direction);
         triangle(0,-50, -50,50, 50,50)
