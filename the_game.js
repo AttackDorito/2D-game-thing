@@ -3,14 +3,32 @@ const playfieldDimensions = 2048
 
 const scaleFactor = 1
 
-const viewObj = {
+const playerObj = {
     posX        : 200,
     posY        : 200,
     velocityVect: [0,0], //velocity vector
     direction   : 0,         //facing direction (radians)
-    thrust      : function thrust(){
-        this.velocityVect[0] += Math.sin(this.direction);
-        this.velocityVect[1] += Math.cos(this.direction);
+    thrust      : function(){
+        this.velocityVect[0] += Math.sin(this.direction) * 0.1;
+        this.velocityVect[1] -= Math.cos(this.direction) * 0.1;
+    },
+    move        : function(){
+        this.posX += this.velocityVect[0]
+        this.posY += this.velocityVect[1]
+    },
+    update      : function(){
+        if(keyIsDown(LEFT_ARROW)){
+            this.direction -= 0.1;
+        }
+        if(keyIsDown(UP_ARROW)){
+            this.thrust();
+        }
+        if(keyIsDown(RIGHT_ARROW)){
+            this.direction += 0.1;
+        }
+        translate(screen_width/2, screen_height/2);
+        rotate(this.direction);
+        triangle(0,-50, -50,50, 50,50)
     }
 }
 
@@ -43,7 +61,7 @@ class objQuad {
 
 function convertPoint(vert){
     var vertOut = []
-    vertOut[0] = Math.floor((vert[0] - viewObj.posX) * scaleFactor) + Math.floor(screen_width / 2)
-    vertOut[1] = Math.floor((vert[1] - viewObj.posY) * scaleFactor) + Math.floor(screen_height / 2)
+    vertOut[0] = Math.floor((vert[0] - playerObj.posX) * scaleFactor) + Math.floor(screen_width / 2)
+    vertOut[1] = Math.floor((vert[1] - playerObj.posY) * scaleFactor) + Math.floor(screen_height / 2)
     return vertOut;
 }

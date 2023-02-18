@@ -10,8 +10,9 @@ function setup() {
 
 function draw() {
   background(220);
-  ellipse(screen_width/2,screen_height/2,80,80);
   gameObjects.forEach(function(gameObject) {
     gameObject.drawObj();
   })
+  playerObj.move();
+  playerObj.update();
 }
