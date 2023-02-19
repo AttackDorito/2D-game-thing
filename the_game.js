@@ -76,7 +76,7 @@ class objLine {
         this.screen2 = convertPoint(this.v2);
         strokeWeight(1);
         line(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1])
-        noStroke();
+        strokeWeight(0);
     }
 }
 

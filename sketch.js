@@ -5,11 +5,11 @@ var gameObjects = []
 function setup() {
   createCanvas(screen_width, screen_height);
   gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100]), new objLine([0,0],[1000,1000])];
-  noStroke();
+  strokeWeight(0);
 }
 
 function draw() {
-  background(220);
+  background(0);
   gameObjects.forEach(function(gameObject) {
     gameObject.drawObj();
   })
