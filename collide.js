@@ -42,9 +42,18 @@ function handle_line_collision (the_line) {
     playerObj.posX -= to_offset * normal[0];
     playerObj.posY -= to_offset * normal[1];
     const hit_force = normal[0] * playerObj.velocityVect[0] + normal[1] * playerObj.velocityVect[1];
-    health -= hit_force * 12;
+    if (millis() > last_damage + 500) {
+        health -= Math.abs(hit_force) * 0.6;
+        last_damage = millis();
+    }
+    if (health <= 0) {
+        health = 0;
+        noLoop();
+    } 
     playerObj.velocityVect[0] -= hit_force * normal[0] * 1.9;
     playerObj.velocityVect[1] -= hit_force * normal[1] * 1.9;
+    console.log(health)
 }
 
-let health = 255;
+let last_damage = 0;
+let health = 16;

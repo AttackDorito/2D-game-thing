@@ -2,6 +2,7 @@ let screen_width = window.innerWidth;
 let screen_height = window.innerHeight;
 var gameObjects = []
 var decayList = []
+let over;
 
 function setup() {
   createCanvas(screen_width, screen_height);

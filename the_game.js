@@ -75,7 +75,7 @@ const playerObj = {
         this.velocityVect[1] *= this.friction;
         translate(screen_width/2, screen_height/2);
         rotate(this.direction);
-        fill(255,health,health);
+        fill(255,health**2,health**2);
         triangle(0,-50, -50,50, 50,50)
         fill(255,200,0,this.thrustWindup * 5);
         triangle(-10,50,10,50,0,80);
