@@ -14,8 +14,8 @@ const playerObj = {
     posY        : 0,
     velocityVect: [0,0],     //velocity vector
     direction   : 0,         //facing direction (radians)
-    friction    : 0.975,
-    thrustValue : 0.3,
+    friction    : 0.985,
+    thrustValue : 0.35,
     thrustWindup: 0,
     rotWindup   : 0,
 
@@ -185,7 +185,7 @@ function rotateVect(vectIn, angle, rotCentre){
 
 
 function gay_erasure () {
-    gameObjects = gameObjects.filter(x => x.tileID > tileCounter - 15);
+    gameObjects = gameObjects.filter(x => x.tileID > tileCounter - 6);
 }
 
 function straightTile(tileOrigin, tileRotation){
@@ -222,7 +222,23 @@ var tileList = [
     let v6 = rotateVect([tileOrigin[0]+500,tileOrigin[1]+700],tileRotation,tileOrigin);
     new objLine(v4,v6);
     nextTile = [rotateVect([tileOrigin[0]+287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),tileRotation + QUARTER_PI];
-    }
+    tileList[0](nextTile[0],nextTile[1]);
+},
+    function(tileOrigin,tileRotation){ //left 45
+    tileCounter++
+    let v1 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v2 = rotateVect([tileOrigin[0]+300,tileOrigin[1] + 700],tileRotation,tileOrigin)
+    new objLine(v1,v2);
+    let v3 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v4 = rotateVect([tileOrigin[0]-300,tileOrigin[1] + 500],tileRotation,tileOrigin)
+    new objLine(v3,v4);
+    let v5 = rotateVect([tileOrigin[0]-75.736,tileOrigin[1] + 1124.264],tileRotation,tileOrigin);
+    new objLine(v2,v5);
+    let v6 = rotateVect([tileOrigin[0]-500,tileOrigin[1]+700],tileRotation,tileOrigin);
+    new objLine(v4,v6);
+    nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),tileRotation - QUARTER_PI];
+    tileList[0](nextTile[0],nextTile[1]);
+}
 
 
 ]
