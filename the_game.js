@@ -73,6 +73,7 @@ const playerObj = {
         else {
             this.thrustWindup -= 3
         }
+        this.move();
     },
 
     get vertexPoints () {

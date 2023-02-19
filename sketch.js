@@ -5,7 +5,7 @@ var decayList = []
 
 function setup() {
   createCanvas(screen_width, screen_height);
-  gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100]), new objLine([0,0],[1000,1000])];
+  gameObjects = [new objLine([0,500],[1000,1000])];
   strokeWeight(0);
   while (decayList.length < 300){
     new speedParticle(100*Math.random()+ 20, 2 * screen_width);
@@ -20,6 +20,6 @@ function draw() {
   decayList.forEach(function(particleObject){
     particleObject.drawObj();
   })
-  playerObj.move();
   playerObj.update();
+  gameObjects.filter(check_collide_line).map(handle_line_collision);
 }
