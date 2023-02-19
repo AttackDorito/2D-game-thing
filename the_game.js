@@ -124,7 +124,7 @@ class objLine {
     drawObj(){
         this.screen1 = convertPoint(this.v1);
         this.screen2 = convertPoint(this.v2);
-        strokeWeight(1);
+        strokeWeight(3);
         stroke(255);
         line(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1])
         strokeWeight(0);
@@ -238,6 +238,37 @@ var tileList = [
     new objLine(v4,v6);
     nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),tileRotation - QUARTER_PI];
     tileList[0](nextTile[0],nextTile[1]);
+},
+function (tileOrigin, tileRotation) {
+    let verts = [ //pinch
+        [-300,0],
+        [-300,1000],
+        [-300,1000],
+        [-100,1500],
+        [-100,1500],
+        [-100,1700],
+        [-100,1700],
+        [-300,2200],
+        [-300,2200],
+        [-300,3200],
+
+        [300,0],
+        [300,1000],
+        [300,1000],
+        [100,1500],
+        [100,1500],
+        [100,1700],
+        [100,1700],
+        [300,2200],
+        [300,2200],
+        [300,3200]
+    ].map(x => rotateVect([x[0] + tileOrigin[0], x[1] + tileOrigin[1]], tileRotation, tileOrigin));
+    let i = 0;
+    while (verts[i]) {
+        new objLine (verts[i], verts[i+1]);
+        i += 2;
+    }
+    nextTile = [rotateVect([tileOrigin[0],tileOrigin[1]+3200],tileRotation,tileOrigin),tileRotation];
 }
 
 
