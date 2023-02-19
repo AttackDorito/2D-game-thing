@@ -58,14 +58,36 @@ class objQuad {
         this.screen2 = convertPoint(this.v2);
         this.screen3 = convertPoint(this.v3);
         this.screen4 = convertPoint(this.v4);
-        fill(51);
-        quad(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1],this.screen3[0],this.screen3[1],this.screen4[0],this.screen4[1])
+        quad(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1],this.screen3[0],this.screen3[1],this.screen4[0],this.screen4[1]);
+    }
+}
+
+class objLine {
+    constructor(v1,v2) {
+        this.v1 = v1
+        this.v2 = v2
+        this.screen1 = convertPoint(this.v1);
+        this.screen2 = convertPoint(this.v2);
+
+    }
+
+    drawObj(){
+        this.screen1 = convertPoint(this.v1);
+        this.screen2 = convertPoint(this.v2);
+        line(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1])
     }
 }
 
 function convertPoint(vert){
-    var vertOut = []
-    vertOut[0] = Math.floor((vert[0] - playerObj.posX) * scaleFactor) + Math.floor(screen_width / 2)
-    vertOut[1] = Math.floor((vert[1] - playerObj.posY) * scaleFactor) + Math.floor(screen_height / 2)
+    var vertOut = [];
+    vertOut[0] = Math.floor((vert[0] - playerObj.posX) * scaleFactor) + Math.floor(screen_width / 2);
+    vertOut[1] = Math.floor((vert[1] - playerObj.posY) * scaleFactor) + Math.floor(screen_height / 2);
+    return vertOut;
+}
+
+function convertBack(vert){
+    var vertOut = [];
+    vertOut[0] = vert[0] - Math.floor(screen_width / 2) * 1/scaleFactor + playerObj.posX;
+    vertOut[0] = vert[1] - Math.floor(screen_height / 2) * 1/scaleFactor + playerObj.posY;
     return vertOut;
 }

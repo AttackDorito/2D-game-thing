@@ -4,7 +4,7 @@ var gameObjects = []
 
 function setup() {
   createCanvas(screen_width, screen_height);
-  gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100])];
+  gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100]), new objLine([0,0],[1000,1000])];
   console.log(gameObjects[0])
 }
 
