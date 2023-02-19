@@ -210,8 +210,18 @@ var tileList = [
     nextTile = [rotateVect([tileOrigin[0],tileOrigin[1]+2500],tileRotation, tileOrigin),tileRotation];
 },
     function(tileOrigin,tileRotation){ //right 45
+    tileCounter++
     let v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1] + 700],tileRotation,tileOrigin)
+    new objLine(v1,v2);
     let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1] + 500],tileRotation,tileOrigin)
+    new objLine(v3,v4);
+    let v5 = rotateVect([tileOrigin[0]-75.736,tileOrigin[1] + 1124.264],tileRotation,tileOrigin);
+    new objLine(v2,v5);
+    let v6 = rotateVect([tileOrigin[0]-500,tileOrigin[1]+700],tileRotation,tileOrigin);
+    new objLine(v4,v6);
+    nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),QUATER_PI];
     }
 
 
