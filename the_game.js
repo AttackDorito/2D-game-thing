@@ -221,7 +221,7 @@ var tileList = [
     new objLine(v2,v5);
     let v6 = rotateVect([tileOrigin[0]-500,tileOrigin[1]+700],tileRotation,tileOrigin);
     new objLine(v4,v6);
-    nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),QUATER_PI];
+    nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),QUARTER_PI];
     }
 
 
