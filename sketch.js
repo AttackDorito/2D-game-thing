@@ -15,4 +15,6 @@ function draw() {
   })
   playerObj.move();
   playerObj.update();
+
+  for(let i = 0; i < )
 }
