@@ -1,5 +1,7 @@
+precision mediump float;
+
 uniform vec2 iResolution;
-uniform iChannel0;
+uniform sampler2D iChannel0;
 
 vec3 samplef(vec2 tc);
 vec3 blur(vec2 tc, float offs);
@@ -70,18 +72,4 @@ vec3 highlights(vec3 pixel, float thres)
 {
 	float val = (pixel.x + pixel.y + pixel.z) / 3.0;
 	return pixel * smoothstep(thres - 0.1, thres + 0.1, val);
-}
-
-uniform vec3      iResolution;           // viewport resolution (in pixels)
-uniform float     iTime;                 // shader playback time (in seconds)
-uniform float     iTimeDelta;            // render time (in seconds)
-uniform float     iFrameRate;            // shader frame rate
-uniform int       iFrame;                // shader playback frame
-uniform float     iChannelTime[4];       // channel playback time (in seconds)
-uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)
-uniform vec4      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click
-uniform samplerXX iChannel0..3;          // input channel. XX = 2D/Cube
-uniform vec4      iDate;                 // (year, month, day, time in seconds)
-uniform float     iSampleRate;           // sound sample rate (i.e., 44100)
-
-    
+}   

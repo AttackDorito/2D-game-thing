@@ -2,6 +2,7 @@ let screen_width = window.innerWidth;
 let screen_height = window.innerHeight;
 var gameObjects = []
 let theShader;
+let cam;
 
 function preload() {
   theShader = loadShader('shader.vert','shader.frag');
@@ -16,7 +17,7 @@ function setup() {
 function draw() {
   shader(theShader);
   theShader.setUniform("iResolution", [screen_width, screen_height]);
-
+  theShader.setUniform("iChannel0", createImageBitmap(screen))
   background(0);
   gameObjects.forEach(function(gameObject) {
     gameObject.drawObj();
