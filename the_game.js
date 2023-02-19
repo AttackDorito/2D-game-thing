@@ -3,17 +3,26 @@ const playfieldDimensions = 2048
 
 const scaleFactor = 1
 
+function clamp(number, min, max) {
+  return Math.max(min, Math.min(number, max));
+}
+
+
 const playerObj = {
     posX        : 200,
     posY        : 200,
-    velocityVect: [0,0], //velocity vector
+    velocityVect: [0,0],     //velocity vector
     direction   : 0,         //facing direction (radians)
     friction    : 0.99,
     thrustValue : 0.5,
+    thrustWindup: 0,
+    rotWindup   : 0,
 
     thrust      : function(){
         this.velocityVect[0] += Math.sin(this.direction) * this.thrustValue;
         this.velocityVect[1] -= Math.cos(this.direction) * this.thrustValue;
+        this.thrustWindup += 3
+        this.thrustWindup = clamp(this.thrustWindup, 0, 50)
     },
     move        : function(){
         this.posX += this.velocityVect[0]
@@ -22,9 +31,6 @@ const playerObj = {
     update      : function(){
         if(keyIsDown(LEFT_ARROW)){
             this.direction -= 0.1;
-        }
-        if(keyIsDown(UP_ARROW)){
-            this.thrust();
         }
         if(keyIsDown(RIGHT_ARROW)){
             this.direction += 0.1;
@@ -35,6 +41,15 @@ const playerObj = {
         rotate(this.direction);
         fill(255);
         triangle(0,-50, -50,50, 50,50)
+        fill(255,200,0,this.thrustWindup * 5);
+        triangle(-10,50,10,50,0,80);
+        fill(255);
+        if(keyIsDown(UP_ARROW)){
+            this.thrust();
+        }
+        else {
+            this.thrustWindup -= 3
+        }
     }
 }
 
