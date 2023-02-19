@@ -32,6 +32,7 @@ const playerObj = {
         this.velocityVect[1] *= this.friction;
         translate(screen_width/2, screen_height/2);
         rotate(this.direction);
+        fill(255);
         triangle(0,-50, -50,50, 50,50)
     }
 }
@@ -82,10 +83,29 @@ class objLine {
 
 class speedParticle {
     constructor(decayFrames, randomRange){
-        this.decayState = decayFrames;
+        this.decayState = 0;
         this.decayFrames = decayFrames;
-        this.posX = playerObj.posX + Math.random()*randomRange;
-        this.posY = playerObj.posY + Math.random()*randomRange;
+        this.pos = [playerObj.posX + Math.random()*randomRange, playerObj.posY + Math.random()*randomRange];
+        this.size = Math.random()*5
+        gameObjects.push(this);
+    }
+
+    drawObj(){
+        this.screen1 = convertPoint(this.pos);
+        fill(255,255,255, (Math.abs(this.decayFrames - this.decayState - (this.decayFrames/2))+this.decayFrames/2))/this.decayFrames * 255;
+        circle(this.screen1[0],this.screen1[1],this.size + 5);
+        fill(255)
+        this.decayState ++;
+        if (this.decayState >= this.decayFrames){
+            gameObjects.splice(gameObjects.findIndex(function(value){
+                if (value == this){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }),1);
+        }
     }
 
 
