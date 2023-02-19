@@ -21,7 +21,7 @@ function draw() {
   })
   playerObj.update();
   gameObjects.filter(check_collide_line).map(handle_line_collision);
-  if(((playerObj.posX - nextTile[0][0])**2)+((playerObj.posY - nextTile[0][1])**2) < 25000000){
+  if(((playerObj.posX - nextTile[0][0])**2)+((playerObj.posY - nextTile[0][1])**2) < 10000000){
     gay_erasure();
     tileList[Math.floor(Math.random()*(tileList.length))](nextTile[0],nextTile[1]);
   }

@@ -10,8 +10,8 @@ function clamp(number, min, max) {
 
 
 const playerObj = {
-    posX        : 200,
-    posY        : 200,
+    posX        : 0,
+    posY        : 0,
     velocityVect: [0,0],     //velocity vector
     direction   : 0,         //facing direction (radians)
     friction    : 0.975,
@@ -185,7 +185,7 @@ function rotateVect(vectIn, angle, rotCentre){
 
 
 function gay_erasure () {
-    gameObjects = gameObjects.filter(x => x.tileID > tileCounter - 5);
+    gameObjects = gameObjects.filter(x => x.tileID > tileCounter - 15);
 }
 
 function straightTile(tileOrigin, tileRotation){
@@ -209,7 +209,7 @@ var tileList = [
     new objLine(v3,v4);
     nextTile = [rotateVect([tileOrigin[0],tileOrigin[1]+2500],tileRotation, tileOrigin),tileRotation];
 },
-    function(tileOrigin,tileRotation){ //right 45
+    function(tileOrigin,tileRotation){ //left 45
     tileCounter++
     let v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
     let v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1] + 700],tileRotation,tileOrigin)
@@ -217,11 +217,11 @@ var tileList = [
     let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
     let v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1] + 500],tileRotation,tileOrigin)
     new objLine(v3,v4);
-    let v5 = rotateVect([tileOrigin[0]-75.736,tileOrigin[1] + 1124.264],tileRotation,tileOrigin);
+    let v5 = rotateVect([tileOrigin[0]+75.736,tileOrigin[1] + 1124.264],tileRotation,tileOrigin);
     new objLine(v2,v5);
-    let v6 = rotateVect([tileOrigin[0]-500,tileOrigin[1]+700],tileRotation,tileOrigin);
+    let v6 = rotateVect([tileOrigin[0]+500,tileOrigin[1]+700],tileRotation,tileOrigin);
     new objLine(v4,v6);
-    nextTile = [rotateVect([tileOrigin[0]-287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),QUARTER_PI];
+    nextTile = [rotateVect([tileOrigin[0]+287.868,tileOrigin[1]+912.132],tileRotation,tileOrigin),tileRotation + QUARTER_PI];
     }
 
 
