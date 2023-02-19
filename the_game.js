@@ -13,8 +13,8 @@ const playerObj = {
     posY        : 200,
     velocityVect: [0,0],     //velocity vector
     direction   : 0,         //facing direction (radians)
-    friction    : 0.99,
-    thrustValue : 0.5,
+    friction    : 0.975,
+    thrustValue : 0.3,
     thrustWindup: 0,
     rotWindup   : 0,
 
@@ -159,8 +159,8 @@ class speedParticle {
 
 function convertPoint(vert){
     var vertOut = [];
-    vertOut[0] = Math.floor((vert[0] - playerObj.posX) * scaleFactor) + Math.floor(screen_width / 2);
-    vertOut[1] = Math.floor((vert[1] - playerObj.posY) * scaleFactor) + Math.floor(screen_height / 2);
+    vertOut[0] = ((vert[0] - playerObj.posX) * scaleFactor) + Math.floor(screen_width / 2);
+    vertOut[1] = ((vert[1] - playerObj.posY) * scaleFactor) + Math.floor(screen_height / 2);
     return vertOut;
 }
 
