@@ -10,7 +10,16 @@ function check_collide_line (line_to_check) {
         cum += Math.sign(normal[0] * v[0] + normal[1] * v[1] - offset)
     }
     //console.log(normal,offset,cum);
-    return Math.abs(cum) != 3;
+    if (Math.abs(cum) == 3) return false;
+    const w = [
+        (line_to_check.v2[0] - line_to_check.v1[0]),
+        (line_to_check.v2[1] - line_to_check.v1[1]) 
+    ];
+    const vsquare = w[0]**2 + w[1]**2;
+    const vdotx = w[0] * (playerObj.posX - line_to_check.v1[0]) + w[1] * (playerObj.posY - line_to_check.v1[1]);
+    console.log(w,vsquare,vdotx);
+    return vdotx >= -20 && vdotx <= vsquare + 20;
+
 }
 
 function get_normal_vector (a_line) {
@@ -29,7 +38,7 @@ function handle_line_collision (the_line) {
     const rel_poses = playerObj.vertexPoints.map(x => normal[0] * x[0] + normal[1] * x[1] - offset);
     const to_offset = (our_side > 0 ? Math.min : Math.max)(
         rel_poses[0], rel_poses[1], rel_poses[2])
-    console.log(normal, offset, our_side, to_offset);
+    //console.log(normal, offset, our_side, to_offset);
     playerObj.posX -= to_offset * normal[0];
     playerObj.posY -= to_offset * normal[1];
     const hit_force = normal[0] * playerObj.velocityVect[0] + normal[1] * playerObj.velocityVect[1];

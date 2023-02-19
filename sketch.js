@@ -5,7 +5,7 @@ var decayList = []
 
 function setup() {
   createCanvas(screen_width, screen_height);
-  gameObjects = [new objLine([0,500],[1000,1000])];
+  gameObjects = [new objLine([0,500],[1000,1000]), new objLine([800,-200],[-500,-900])];
   strokeWeight(0);
   while (decayList.length < 300){
     new speedParticle(100*Math.random()+ 20, 2 * screen_width);
