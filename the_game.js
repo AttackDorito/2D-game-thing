@@ -1,4 +1,5 @@
-
+var tileCounter = 0;
+var nextTile = [[0,0],0];
 const playfieldDimensions = 2048
 
 const scaleFactor = 1
@@ -116,7 +117,8 @@ class objLine {
         this.v2 = v2
         this.screen1 = convertPoint(this.v1);
         this.screen2 = convertPoint(this.v2);
-
+        this.tileID = tileCounter;
+        gameObjects.push(this);
     }
 
     drawObj(){
@@ -181,11 +183,9 @@ function rotateVect(vectIn, angle, rotCentre){
     return vectOut;
 }
 
-let el_numero_tile = 0;
 
 function gay_erasure () {
-    el_numero_tile += 1;
-    gameObjects = gameObjects.filter(x => x > el_numero_tile - 5);
+    gameObjects = gameObjects.filter(x => x.tileID > tileCounter - 5);
 }
 
 function straightTile(tileOrigin, tileRotation){
@@ -193,5 +193,26 @@ function straightTile(tileOrigin, tileRotation){
     let v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1]+2500],tileRotation,tileOrigin);
     let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
     let v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1]+2500],tileRotation,tileOrigin);
+    tileCounter ++
     return[[new objLine(v1,v2), new objLine(v3,v4)],[rotateVect([tileOrigin[0],tileOrigin[1]+2500],tileRotation, tileOrigin),tileRotation]];
 }
+
+
+var tileList = [
+    function(tileOrigin,tileRotation){ //straight tile
+    let v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1]+2500],tileRotation,tileOrigin);
+    let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1]+2500],tileRotation,tileOrigin);
+    tileCounter ++
+    new objLine(v1,v2);
+    new objLine(v3,v4);
+    nextTile = [rotateVect([tileOrigin[0],tileOrigin[1]+2500],tileRotation, tileOrigin),tileRotation];
+},
+    function(tileOrigin,tileRotation){ //right 45
+    let v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
+    }
+
+
+]
