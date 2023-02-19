@@ -74,8 +74,21 @@ class objLine {
     drawObj(){
         this.screen1 = convertPoint(this.v1);
         this.screen2 = convertPoint(this.v2);
+        strokeWeight(1);
         line(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1])
+        noStroke();
     }
+}
+
+class speedParticle {
+    constructor(decayFrames, randomRange){
+        this.decayState = decayFrames;
+        this.decayFrames = decayFrames;
+        this.posX = playerObj.posX + Math.random()*randomRange;
+        this.posY = playerObj.posY + Math.random()*randomRange;
+    }
+
+
 }
 
 function convertPoint(vert){
