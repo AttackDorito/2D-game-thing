@@ -17,7 +17,7 @@ function check_collide_line (line_to_check) {
     ];
     const vsquare = w[0]**2 + w[1]**2;
     const vdotx = w[0] * (playerObj.posX - line_to_check.v1[0]) + w[1] * (playerObj.posY - line_to_check.v1[1]);
-    console.log(w,vsquare,vdotx);
+    // console.log(w,vsquare,vdotx);
     return vdotx >= -20 && vdotx <= vsquare + 20;
 
 }
@@ -42,6 +42,9 @@ function handle_line_collision (the_line) {
     playerObj.posX -= to_offset * normal[0];
     playerObj.posY -= to_offset * normal[1];
     const hit_force = normal[0] * playerObj.velocityVect[0] + normal[1] * playerObj.velocityVect[1];
+    health -= hit_force * 12;
     playerObj.velocityVect[0] -= hit_force * normal[0] * 1.9;
     playerObj.velocityVect[1] -= hit_force * normal[1] * 1.9;
 }
+
+let health = 255;
