@@ -7,6 +7,9 @@ function setup() {
   createCanvas(screen_width, screen_height);
   gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100]), new objLine([0,0],[1000,1000])];
   strokeWeight(0);
+  while (decayList.length < 100){
+    new speedParticle(500*Math.random()+ 20, screen_width);
+  }
 }
 
 function draw() {
@@ -17,9 +20,6 @@ function draw() {
   decayList.forEach(function(particleObject){
     particleObject.drawObj();
   })
-  while (decayList.length < 100){
-    new speedParticle(100, screen_width);
-  }
   playerObj.move();
   playerObj.update();
 }

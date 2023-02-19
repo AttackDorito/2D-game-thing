@@ -78,11 +78,16 @@ class objLine {
 
 class speedParticle {
     constructor(decayFrames, randomRange){
+        this.randomRange = randomRange;
         this.decayState = -decayFrames;
         this.decayFrames = decayFrames;
-        this.pos = [playerObj.posX + Math.random()*randomRange, playerObj.posY + Math.random()*randomRange];
+        this.pos = [playerObj.posX + this.random()*randomRange, playerObj.posY + this.random()*randomRange];
         this.size = Math.random()*5
         decayList.push(this);
+    }
+
+    random(){
+        return (Math.random() * 2 - 1);
     }
 
     drawObj(){
@@ -93,17 +98,10 @@ class speedParticle {
         fill(255)
         this.decayState ++;
         if (this.decayState >= this.decayFrames){
-            gameObjects.splice(gameObjects.findIndex(function(value){
-                if (value == this){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }),1);
+            this.decayState = -this.decayFrames;
+            this.pos = [playerObj.posX + this.random()*this.randomRange, playerObj.posY + this.random()*this.randomRange];
         }
     }
-
 
 }
 
