@@ -71,7 +71,6 @@ class objLine {
         this.screen1 = convertPoint(this.v1);
         this.screen2 = convertPoint(this.v2);
         strokeWeight(1);
-        stroke(255);
         line(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1])
         strokeWeight(0);
     }
@@ -88,7 +87,7 @@ class speedParticle {
 
     drawObj(){
         this.screen1 = convertPoint(this.pos);
-        fill(255,255,255, (Math.abs(this.decayFrames - this.decayState - (this.decayFrames/2))+this.decayFrames/2))/this.decayFrames * 255;
+        fill(255,255,255,)
         circle(this.screen1[0],this.screen1[1],this.size + 5);
         fill(255)
         this.decayState ++;
