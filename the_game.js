@@ -9,10 +9,11 @@ const playerObj = {
     velocityVect: [0,0], //velocity vector
     direction   : 0,         //facing direction (radians)
     friction    : 0.99,
+    thrustValue : 0.5,
 
     thrust      : function(){
-        this.velocityVect[0] += Math.sin(this.direction) * 0.1;
-        this.velocityVect[1] -= Math.cos(this.direction) * 0.1;
+        this.velocityVect[0] += Math.sin(this.direction) * this.thrustValue;
+        this.velocityVect[1] -= Math.cos(this.direction) * this.thrustValue;
     },
     move        : function(){
         this.posX += this.velocityVect[0]
@@ -93,14 +94,14 @@ class speedParticle {
     drawObj(){
         var opacity = 1 - Math.abs(this.decayState) / this.decayFrames;
         this.screen1 = convertPoint(this.pos);
+        if (this.decayState >= this.decayFrames||this.screen1[0]<-screen_height||this.screen1[1]<-screen_height||this.screen1[0]>2*screen_width||this.screen1[1]>2*screen_height){
+            this.decayState = -this.decayFrames;
+            this.pos = [playerObj.posX + this.random()*this.randomRange, playerObj.posY + this.random()*this.randomRange];
+        }
         fill(255,255,255,255*opacity);
         circle(this.screen1[0],this.screen1[1],this.size + 5);
         fill(255)
         this.decayState ++;
-        if (this.decayState >= this.decayFrames){
-            this.decayState = -this.decayFrames;
-            this.pos = [playerObj.posX + this.random()*this.randomRange, playerObj.posY + this.random()*this.randomRange];
-        }
     }
 
 }

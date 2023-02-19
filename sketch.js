@@ -7,8 +7,8 @@ function setup() {
   createCanvas(screen_width, screen_height);
   gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100]), new objLine([0,0],[1000,1000])];
   strokeWeight(0);
-  while (decayList.length < 100){
-    new speedParticle(500*Math.random()+ 20, screen_width);
+  while (decayList.length < 300){
+    new speedParticle(100*Math.random()+ 20, 2 * screen_width);
   }
 }
 
