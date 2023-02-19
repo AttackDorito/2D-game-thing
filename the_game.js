@@ -78,16 +78,17 @@ class objLine {
 
 class speedParticle {
     constructor(decayFrames, randomRange){
-        this.decayState = 0;
+        this.decayState = -decayFrames;
         this.decayFrames = decayFrames;
         this.pos = [playerObj.posX + Math.random()*randomRange, playerObj.posY + Math.random()*randomRange];
         this.size = Math.random()*5
-        gameObjects.push(this);
+        decayList.push(this);
     }
 
     drawObj(){
+        var opacity = 1 - Math.abs(this.decayState) / this.decayFrames;
         this.screen1 = convertPoint(this.pos);
-        fill(255,255,255,)
+        fill(255,255,255,255*opacity);
         circle(this.screen1[0],this.screen1[1],this.size + 5);
         fill(255)
         this.decayState ++;
