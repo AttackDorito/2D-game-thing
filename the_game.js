@@ -77,8 +77,8 @@ const playerObj = {
 
     get vertexPoints () {
         const rotation_matrix = v => [
-            v[0] * cos(this.direction) + v[1] * sin(this.direction),
-            v[0] *-sin(this.direction) + v[1] * cos(this.direction)
+            v[0] * cos(this.direction) - v[1] * sin(this.direction),
+            v[0] * sin(this.direction) + v[1] * cos(this.direction)
         ];
         return [
             [0,-50],
