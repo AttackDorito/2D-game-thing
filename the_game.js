@@ -30,11 +30,34 @@ const playerObj = {
     },
     update      : function(){
         if(keyIsDown(LEFT_ARROW)){
-            this.direction -= 0.1;
+            this.rotWindup --;
+
+        }
+        else if(!keyIsDown(RIGHT_ARROW)){
+            if(this.rotWindup < -0.5){
+                this.rotWindup += 0.5;
+            }
+            else if(this.rotWindup < 0){
+                this.rotWindup = 0;
+            }
+
         }
         if(keyIsDown(RIGHT_ARROW)){
-            this.direction += 0.1;
+            this.rotWindup ++;
         }
+        else if(!keyIsDown(LEFT_ARROW)){
+            if(this.rotWindup > 0.5){
+                this.rotWindup -= 0.5;
+            }
+            else if(this.rotWindup > 0){
+                this.rotWindup = 0;
+            }
+            
+        }
+
+        this.rotWindup = clamp(this.rotWindup, -5, 5);
+        this.direction += this.rotWindup * 0.02 ;
+
         this.velocityVect[0] *= this.friction;
         this.velocityVect[1] *= this.friction;
         translate(screen_width/2, screen_height/2);
