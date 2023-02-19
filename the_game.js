@@ -41,7 +41,6 @@ const playerObj = {
         rotate(this.direction);
         fill(255);
         triangle(0,-50, -50,50, 50,50)
-<<<<<<< HEAD
         fill(255,200,0,this.thrustWindup * 5);
         triangle(-10,50,10,50,0,80);
         fill(255);
@@ -51,7 +50,6 @@ const playerObj = {
         else {
             this.thrustWindup -= 3
         }
-=======
     },
 
     get vertexPoints () {
@@ -64,7 +62,6 @@ const playerObj = {
             [-50,50],
             [50,50]
         ].map(rotation_matrix).map(x => [x[0] + this.posX, x[1] + this.posY]);
->>>>>>> 3bbe05f7b501f516b234fa759f106a8f92f81e3a
     }
 }
 
