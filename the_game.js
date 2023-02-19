@@ -171,6 +171,7 @@ function convertBack(vert){
     vertOut[0] = vert[1] - Math.floor(screen_height / 2) * 1/scaleFactor + playerObj.posY;
     return vertOut;
 }
+
 function rotateVect(vectIn, angle, rotCentre){
     let vectOut = [];
     let loc_cos = Math.cos(angle);
@@ -180,10 +181,17 @@ function rotateVect(vectIn, angle, rotCentre){
     return vectOut;
 }
 
+let el_numero_tile = 0;
+
+function gay_erasure () {
+    el_numero_tile += 1;
+    gameObjects = gameObjects.filter(x => x > el_numero_tile - 5);
+}
+
 function straightTile(tileOrigin, tileRotation){
-    v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
-    v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1]+2500],tileRotation,tileOrigin);
-    v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
-    v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1]+2500],tileRotation,tileOrigin);
+    let v1 = rotateVect([tileOrigin[0]-300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v2 = rotateVect([tileOrigin[0]-300,tileOrigin[1]+2500],tileRotation,tileOrigin);
+    let v3 = rotateVect([tileOrigin[0]+300,tileOrigin[1]],tileRotation,tileOrigin);
+    let v4 = rotateVect([tileOrigin[0]+300,tileOrigin[1]+2500],tileRotation,tileOrigin);
     return[[new objLine(v1,v2), new objLine(v3,v4)],[rotateVect([tileOrigin[0],tileOrigin[1]+2500],tileRotation, tileOrigin),tileRotation]];
 }
