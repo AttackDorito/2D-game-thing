@@ -87,6 +87,8 @@ const playerObj = {
             this.thrustWindup -= 3
         }
         this.move();
+        health += Math.max(0, Math.min(sqrt(this.velocityVect[0]**2 + this.velocityVect[1]**2) / 400 - 0.03, 0.05))
+        if (health > 16) {health = 16;}
     },
 
     get vertexPoints () {
