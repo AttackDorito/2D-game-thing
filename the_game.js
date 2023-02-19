@@ -58,7 +58,7 @@ class objQuad {
         this.screen2 = convertPoint(this.v2);
         this.screen3 = convertPoint(this.v3);
         this.screen4 = convertPoint(this.v4);
-        fill(51);
+        fill(200);
         quad(this.screen1[0],this.screen1[1],this.screen2[0],this.screen2[1],this.screen3[0],this.screen3[1],this.screen4[0],this.screen4[1])
     }
 }
