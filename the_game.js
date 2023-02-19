@@ -172,7 +172,11 @@ function convertBack(vert){
     return vertOut;
 }
 function rotateVect(vectIn, angle, rotCentre){
-    vectOut = vectIn; //placeholder
+    let vectOut = [];
+    let loc_cos = Math.cos(angle);
+    let loc_sin = Math.sin(angle);
+    vectOut[0] = (loc_cos *(vectIn[0] - rotCentre[0])) + (loc_sin * (vectIn[1] - rotCentre[1])) + rotCentre[0];
+    vectOut[1] = (loc_cos *(vectIn[1] - rotCentre[1])) - (loc_sin * (vectIn[0] - rotCentre[0])) + rotCentre[1];
     return vectOut;
 }
 
