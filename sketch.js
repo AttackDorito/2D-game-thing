@@ -8,12 +8,13 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(screen_width, screen_height);
+  createCanvas(screen_width, screen_height, WEBGL);
   gameObjects = [new objQuad([0,0],[100,0],[100,100],[0,100])];
   console.log(gameObjects[0])
 }
 
 function draw() {
+  shader(theShader);
   theShader.setUniform("iResolution", [screen_width, screen_height]);
 
   background(0);
