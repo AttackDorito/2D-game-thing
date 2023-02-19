@@ -46,11 +46,6 @@ class objQuad {
         this.v2 = v2;
         this.v3 = v3;
         this.v4 = v4;
-
-        this.screen1 = convertPoint(this.v1);
-        this.screen2 = convertPoint(this.v2);
-        this.screen3 = convertPoint(this.v3);
-        this.screen4 = convertPoint(this.v4);
     }
 
     drawObj(){
