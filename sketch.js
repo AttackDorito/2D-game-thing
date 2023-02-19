@@ -14,6 +14,8 @@ function setup() {
 
 function draw() {
   background(0);
+  textSize(60);
+  text(`Score: ${tileCounter}`, 20, 80);
   gameObjects.forEach(function(gameObject) {
     gameObject.drawObj();
   })
